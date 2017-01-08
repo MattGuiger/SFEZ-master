@@ -9,7 +9,7 @@
 "#termsCondition":{
 	bottom: 5,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	text: L("TermsandConditions"),
+	text: "Terms & Conditions",
 	font: {
 		fontSize: 16,
 		fontFamily: 'Lucida Grande',
@@ -32,30 +32,30 @@
 }
 
 "#first_name": {
-	hintText: L("first_name"),
+	hintText: "First Name",
 	hintTextColor: "gray"
 }
 "#last_name":{
-	hintText: L("last_name"),
+	hintText: "Last Name",
 	hintTextColor: "gray"
 }
 "#email": {
-	hintText: L("email_example"),
+	hintText: "Email.example.com",
 	hintTextColor: "gray"
 }
 
 "#password": {
-	hintText: L("password"),
+	hintText: "Password",
 	hintTextColor: "gray",
 	passwordMask: true
 }
 "#password_confirmation":{
-	hintText: L("password_confirmation"),
+	hintText: "Password Confirmation",
 	hintTextColor: "gray",
 	passwordMask: true
 }
 "#company_name":{
-	hintText: L("RegistrationVendor"),
+	hintText: "Vendor Name",
 	hintTextColor: "gray"
 }
 

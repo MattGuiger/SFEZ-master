@@ -51,28 +51,14 @@ function createVendorListTable(data) {
 		 //row.add(iconType);
 		 
 		var leftButtonIcon = "";
-		
-		if(data[i].company.photo){
-			if((data[i].company.photo).toString().indexOf("https://") == -1){
-				leftButtonIcon = "https://" + data[i].company.photo ;
-			}
-			else{
-				leftButtonIcon =data[i].company.photo ;
-			}
-	//		leftButtonIcon = ((data[i].company.photo).toString()).indexOf("https://") != -1 ? (data[i].company.photo) ; ("https://"+ data[i].company.photo);
+		if(data[i].unit.type == "TRUCK"){
+			leftButtonIcon = "/images/consumerordering/food_truck_small.png";
+		}else if (data[i].unit.type == "CART"){
+			leftButtonIcon = "/images/consumerordering/foodcart_small.png";
+		}else{
+			leftButtonIcon = "/images/consumerordering/brick_small.png";
 		}
-		else{
-			if(data[i].unit.type == "TRUCK"){
-				leftButtonIcon = "/images/consumerordering/food_truck_small.png";
-			}else if (data[i].unit.type == "CART"){
-				leftButtonIcon = "/images/consumerordering/foodcart_small.png";
-			}else{
-				leftButtonIcon = "/images/consumerordering/brick_small.png";
-			}
-		}  
-		
-		//Ti.API.info("left icon imagesss::: "+data[i].company.photo);
-		
+
 		var iconTrend = Ti.UI.createImageView({
 			height : 13,
 			width : 17,
@@ -105,24 +91,7 @@ function createVendorListTable(data) {
 		});
 
 		row.add(titleLbl);
-		
-		var distLbl = Ti.UI.createLabel({
-			right : 10,
-			text : Alloy.Globals.GetDistanceFromLocation(data[i].unit.latitude, data[i].unit.longitude,true),
-			font : {
-				fontFamily : "Raleway",
-				fontSize : "10"
-			},
-			color : Alloy.Globals.buttonColor,
-			width : 100,
-			textAlign:"right",
-			maxLines : 1,
-			height : Ti.UI.SIZE,
-			//backgroundColor:"pink"
-		});
 
-		row.add(distLbl);
-		
 		var subTitleLbl = Ti.UI.createLabel({
 			left : 80,
 			top : 30,
@@ -184,7 +153,6 @@ function createVendorListTable(data) {
 		
 		openVendorDetailPage(e.row.vendor.company.id,e.row.unit);
 		return;
-		Ti.API.info(JSON.stringify(e.row.unit));
 		var venderDetail = Alloy.createController('vendorDetails', {
 			vendor : e.row.vendor,
 			unit : e.row.unit

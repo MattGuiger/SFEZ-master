@@ -18,7 +18,7 @@ function getRole() {
 
 // HTTP client for get data
 exports.get = function(url, callback) {
-	Ti.API.info('URL---------->  ' + url);
+	Ti.API.info('URL-->  ' + url);
 	if (Ti.Network.online) {
 		var client = Ti.Network.createHTTPClient({
 			onload : function(e) {
@@ -41,7 +41,6 @@ exports.get = function(url, callback) {
 		Ti.API.info("*****************access token**************** " + access_token);
 		if (access_token != "") {
 			client.setRequestHeader('AUTHORIZATION', 'Bearer ' + access_token);
-			Ti.API.info('AUTHORIZATION' + "@@"+ access_token);
 		}
 		client.send();
 	} else {
@@ -52,7 +51,6 @@ exports.get = function(url, callback) {
 // HTTP client for post data
 exports.post = function(url, data, successCallback, errorCallback, method, isHeader) {
 	Ti.API.info("**************service utility********* " + JSON.stringify(data));
-	Ti.API.info("**************service utility urlllll********* " + url);
 	var method = method ? method : "POST";
 	if (Ti.Network.online) {
 		var client = Ti.Network.createHTTPClient({
@@ -85,15 +83,13 @@ exports.post = function(url, data, successCallback, errorCallback, method, isHea
 		}
 		if(method == "PUT"){
 			Ti.API.info("*****************JWTToken**************** " + Alloy.Globals.JWTToken);
-			
 			client.setRequestHeader('Authorization', " "+Alloy.Globals.JWTToken);
 			//client.setRequestHeader('Authorization', 'Bearer ' + access_token);
 		}
 		else if (access_token != "" && (method != "PUT")) {
-			Ti.API.info(method + ":: "+ 'Bearer ' + access_token);
 			client.setRequestHeader('Authorization', 'Bearer ' + access_token);
 		}
-		Ti.API.info("data send in service:" + JSON.stringify(data));
+		
 		client.send(data);
 	} else {
 		alert("Please check your internet connection");

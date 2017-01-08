@@ -146,21 +146,16 @@ var vendorLeftMenuItems = [{
 }, {
 	title : "Configuration",
 	id : "configuration",
-/*
 }, {
 	title : "Menu Availability",
 	id : "menu_available",
 }, {
-*/
 	title : L('SignIn'),
 	id : "signin",
 }, {
 	title : L('CreateAccount'),
 	id : "create_account",
-},{
-	title : L('Registration'),
-	id : "registration",
-}];	
+}];
 
 function getTableRows(_role) {
 	var data = (_role == "CUSTOMER") ? customerLeftMenuItems : vendorLeftMenuItems;
@@ -320,14 +315,7 @@ function createMenuDrawer() {
 				view : Alloy.createController('/foodtruck/menuAvailability').getView(),
 				title : "Menu Availability"
 			});
-		} else if (e.source.id == "registration") {
-			//$.baseView.add(Alloy.createController('login').getView());
-			utils.replaceCentralView({
-				view : Alloy.createController('/foodtruck/registration/registration').getView(),
-				title : "Registration"
-			});
-		}				
-
+		}
 		if (OS_ANDROID) {
 			drawer.closeLeftWindow();
 		} else {

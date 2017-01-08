@@ -3,11 +3,11 @@
     <sdk-version>5.2.2.GA</sdk-version>
     <deployment-targets>
         <target device="mobileweb">false</target>
-        <target device="iphone">false</target>
-        <target device="ipad">false</target>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
         <target device="android">true</target>
     </deployment-targets>
-    <id>com.streetfoodez.sfez</id>
+    <id>com.streetfoodez</id>
     <name>SFEZ</name>
     <version>1.0</version>
     <publisher>not specified</publisher>
@@ -18,9 +18,8 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <!-- <guid>0513031a-00ba-4de1-9999-6fc024c2e047</guid>
-    <guid>4a63fd0b-5d8f-46c4-9111-804983f2f406</guid>-->
-    <guid>646ea734-9590-4ce5-9eee-efaacfd83a17</guid>
+    <!-- <guid>0513031a-00ba-4de1-9999-6fc024c2e047</guid>-->
+    <guid>9fff8839-e7a9-45c2-9ddd-575f8b5b7e80</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>

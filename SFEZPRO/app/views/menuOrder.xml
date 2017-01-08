@@ -6,7 +6,7 @@
 		<!--<ActionBar platform="android" displayHomeAsUp="true" onHomeIconItemSelected="closeWin"></ActionBar>-->
 		<View class="navigator" height="55" backgroundColor="#68c7c7">
 			<ImageView id="backListViewIcon" onClick="closeWindow" />
-			<Label id="winTitle" text="L('PacoTacaos')"/>
+			<Label id="winTitle" text="Paco 's Tacos"/>
 			<View id="goToMyOrderView" onClick="goToMyOrder">
 				<Label id="menuItemSelectedCount"/>
 				<View id="cartView">

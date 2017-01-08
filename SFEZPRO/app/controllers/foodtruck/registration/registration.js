@@ -4,10 +4,6 @@
 // } else {
 // sndHomeRadioCliked();
 // }
-
-
-// Edited by Aryvart - open
-/*
 function Radio1Cliked() {
 	$.sndRadio.image = "/images/radio_off.png";
 	$.trdRadio.image = "/images/radio_off.png";
@@ -25,15 +21,7 @@ function Radio3Cliked() {
 	$.sndRadio.image = "/images/radio_off.png";
 	$.trdRadio.image = "/images/radio_on.png";
 }
-*/
-	var serviceUtility = require('ServiceUtility'),
-    SFEZKeys = require("SFEZKeys"),
-    utils = require("utils");
-	var userInfo = Alloy.Globals.getData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO);
-	$.vendorName.text =  userInfo.company.name;
-	
-	
-// Edited by Aryvart - Closed
+
 function UpdateCheckBox(e) {
 	if (!e.source.idCheck) {
 		e.source.idCheck = true;

@@ -42,20 +42,8 @@ $.getView().addEventListener('close', function() {
 	//Alloy.Globals.tabConsumer.fireEvent('focus');
 });
 
-
-// Edited by Aryvart - Open
-            if(vendor.tags == "TRUCK"){
-				$.vendorPhoto.image = "https://" + vendor.photo;
-			}else if (vendor.tags == "CART"){
-				$.vendorPhoto.image = "https://" + vendor.photo;
-			}else{
-				$.vendorPhoto.image = "https://" + vendor.photo;
-			}
-// Edited by Aryvart - close		
-			
 $.titelLbl.text = vendor.name;
-$.subTitelLbl.text=vendor.tags;
-			
+// $.subTitelLbl.text=vendorData
 $.detailsLbl.text = vendor.description;
 $.linkLbl.text = vendor.facebook;
 $.hrsValue.text = vendor.schedule + " " + vendor.hours;
@@ -78,7 +66,6 @@ function openReviews(e) {
 }
 
 function openFavScreen(e) {
-	
 	//Alloy.Globals.baseView.add(Alloy.createController('favorites').getView());
 	//var favoriteList = Alloy.createController('favorites').getView();
 	//favoriteList.open();

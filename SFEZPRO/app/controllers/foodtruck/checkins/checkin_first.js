@@ -29,9 +29,7 @@ var foodParkPicker = Ti.UI.createPicker({
 	top : 0,
 	selectionIndicator : true,
 	height : Titanium.UI.FILL,
-	/*width : Titanium.UI.FILL*/
-	width : 200,
-	textAlign:'center'
+	width : Titanium.UI.FILL
 });
 Alloy.Globals.foodParks && foodParkPicker.add(getFoodParkPickerRowData(Alloy.Globals.foodParks));
 

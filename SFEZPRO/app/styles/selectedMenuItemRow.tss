@@ -61,7 +61,7 @@
 	left: 40,
 	right: 100,
 	top: 50,
-	text: "L(ExtraBeef)",
+	text: "Extra Beef",
 	font: {
 		fontSize: 11,
 		fontFamily: 'Lucida Grande',

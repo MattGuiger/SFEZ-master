@@ -7,7 +7,7 @@
 			<ScrollView id="menuScroller" class="mainView">
 				<View class="tableRow">
 					<ImageView id="profileImage" />
-					<ActivityIndicator id="menuActivityIndicator" message="L('loading')"/>
+					<ActivityIndicator id="menuActivityIndicator" message="Loading..."/>
 					<Label id="FTname" class="username" />
 					<View class="smallDivisor"></View>
 					<View id="starsDesc">
@@ -42,7 +42,7 @@
 				</View>
 
 
-				<ActivityIndicator id="reviewsActivityIndicator" message="('loading')"/>
+				<ActivityIndicator id="reviewsActivityIndicator" message="Loading..."/>
 					<Label text="L('powerReviews')" class="defaultLabel"/>
 					<ScrollableView id="powerReviews">
 					</ScrollableView>

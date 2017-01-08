@@ -38,19 +38,8 @@
 	top: 20,
 	height: 50,
 	borderRadius: 3,
-	title: L("save"),
+	title: "Save",
 	width: Titanium.UI.FILL,
-	backgroundColor: Alloy.Globals.buttonColor
-}
-"#editLabel":{
-	right : 0,
-	width:80,
-	//backgroundColor:"red",
-	top:"0",
-	textAlign:"center",
-	borderRadius: 3,
-	height: 20,
-	title: L("Edit"),
 	backgroundColor: Alloy.Globals.buttonColor
 }
 ".lbl":{
@@ -81,7 +70,7 @@
 	color: "#fff"
 }
 "#cardNumField":{
-	hintText: L("Entercardnumber"),
+	hintText: "Enter card number",
 	keyboardType: Titanium.UI.KEYBOARD_TYPE_NUMBER_PAD,
 	maxLength: 19
 }

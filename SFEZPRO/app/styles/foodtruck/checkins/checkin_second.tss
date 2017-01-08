@@ -34,10 +34,8 @@
 	backgroundColor: Alloy.Globals.mapsBackgroundColor
 }
 
-// Edited by Aryvart - Open
-/*
 "#foodParkName":{
-	top: 25,
+	top: 5,
 	left: 30,
 	wordWrap: false,
 	ellipsize: true,
@@ -49,20 +47,6 @@
 	},
 	right: 5
 }
-*/
-"#foodParkName":{
-	top: 25,
-	left: 30,
-	width: "90%",
-	maxLines: "5",
-	font: {
-		fontSize: 16,
-		fontFamily: 'Lucida Grande',
-		fontWeight: "bold"
-	},
-	right: 5
-}
-// Edited by Aryvart - Closed
 
 ".saveButton": {
 	top: 15,
@@ -123,6 +107,5 @@
 	backgroundColor: "#888888",
 	left: 30,
 	right: 30,
-	value: '2022-02-29 15:30:00 +0000',
 	height: Titanium.UI.SIZE
 }

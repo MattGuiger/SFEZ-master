@@ -5,7 +5,7 @@
 				<ImageView id="jujoimg"/>
 				<Label id="welcome" text="Welcome" />
 				<Label id="vendorName"/>
-				<Button title="USE CURRENT LOCATION" class="loginButton left10 right10"/>
+				<Button title="CURRENT LOCATION" class="loginButton left10 right10"/>
 				<View class="heightSize horzCenter" layout="horizontal">
 					<ImageView id ="ck1" onClick="UpdateCheckBox" idCheck="false" class="checkBox"/>
 					<Label id="permanentLocation" left="2%" text="This is a fixed location"/>

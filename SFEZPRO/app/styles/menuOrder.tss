@@ -96,7 +96,7 @@
 		fontSize: 12,
 		fontFamily: 'Regular'
 	},
-	text: L("cart"),
+	text: "Cart",
 	color: "#000",
 	top: -4,
 	zIndex: 1

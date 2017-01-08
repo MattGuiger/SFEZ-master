@@ -1,6 +1,5 @@
 var SFEZKeys = require("SFEZKeys");
 var lastObj = $.f1Radio;
-var searObj = $.fstRadio;
 
 var utils = require("utils");
 
@@ -20,9 +19,8 @@ function Radio2Cliked() {
 	$.sndRadio.image = "/images/radio_on.png";
 	$.postCode.visible = true;
 }
-searObj.image = "/images/radio_on.png";
-lastObj.image = "/images/radio_on.png";
 
+lastObj.image = "/images/radio_on.png";
 $.ck1.image = "/images/check_on.png";
 function RadioBtnCliked(e) {
 	lastObj.image = "/images/radio_off.png";

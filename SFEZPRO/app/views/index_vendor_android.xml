@@ -64,42 +64,42 @@
   		<View id="options" top="10" layout="vertical" height="180">
   			<View height="50" layout="horizontal">
   				<ImageView left="20" image="/images/tabicons/cart.png"></ImageView>
-  				<Label  class ="menuOption" text="L('AlokPatil')" />
+  				<Label  class ="menuOption" text="Alok Patil" />
   			</View>
   			<View class="container" >   
-  				<Label id="Profile"  class ="menuOption" text="L('profile')" onClick="clickedOption"/>
-  				<Label id="DailySpecial" class ="menuOption" text="L('DailySpecials')" onClick="clickedOption"/>
-  				<Label id="Events" class ="menuOption" text="L('SettingsPushEvents')" onClick="clickedOption"/>
-  				<Label id="MyLoyalty" class ="menuOption" text="L('MyLoyaltyMyLoyalty')" onClick="clickedOption"/>
-  				<Label id="SearchPref" class ="menuOption" text="L('SearchPreferences')" onClick="clickedOption"/>
+  				<Label id="Profile"  class ="menuOption" text="Profile" onClick="clickedOption"/>
+  				<Label id="DailySpecial" class ="menuOption" text="Daily Specials" onClick="clickedOption"/>
+  				<Label id="Events" class ="menuOption" text="Events" onClick="clickedOption"/>
+  				<Label id="MyLoyalty" class ="menuOption" text="My Loyalty" onClick="clickedOption"/>
+  				<Label id="SearchPref" class ="menuOption" text="Search Preferences" onClick="clickedOption"/>
   			</View>  
   		</View>
   		<View id="loginOption" class="loginHeader"> 
-  			<Label id="Vendor"  top="5" class ="menuOption" text="L('GotoVendor')" onClick="clickedOption"/>
-  			<Label id="SignIn"  top="5" class ="menuOption" text="L('SignIn')" onClick="clickedOption"/>
-  			<Label id="CAccount"  class ="menuOption" text="L('CreateAccount')" onClick="clickedOption"/>
+  			<Label id="Vendor"  top="5" class ="menuOption" text="Go to Vendor" onClick="clickedOption"/>
+  			<Label id="SignIn"  top="5" class ="menuOption" text="Sign In" onClick="clickedOption"/>
+  			<Label id="CAccount"  class ="menuOption" text="Create Account" onClick="clickedOption"/>
   		</View>
   	</View> 
   	
   	<View id="sidemenuVendor" class="sidemenu">
   		<View height="80" layout="horizontal" >
   			<!-- <ImageView left="20" image="/images/tabicons/cart.png"></ImageView> -->
-  			<Label class ="menuHeader" text="L('PacoTacaos')" /></View> 
+  			<Label class ="menuHeader" text="Paco's Tacaos" /></View> 
   		<View class="saperatorLight"/>
   		<View id="options" top="10" layout="vertical" height="180">
   			<View class="container" >   
-  				<Label id="CheckIn"  class ="menuOption" text="L('checkin')" onClick="clickedOption"/>
-  				<Label id="DailyVSpecial" class ="menuOption" text="L('DailySpecials')" onClick="clickedOption"/>
-  				<Label id="MenuAvailable" class ="menuOption" text="L('MenuAvailability')" onClick="clickedOption"/>
-  				<Label id="Report" class ="menuOption" text="L('Reports')" onClick="clickedOption"/>
-  				<Label id="Review" class ="menuOption" text="L('Reviews')" onClick="clickedOption"/>
-  				<Label id="Config" class ="menuOption" text="L('Configuration')" onClick="clickedOption"/>
+  				<Label id="CheckIn"  class ="menuOption" text="Check-In" onClick="clickedOption"/>
+  				<Label id="DailyVSpecial" class ="menuOption" text="Daily Specials" onClick="clickedOption"/>
+  				<Label id="MenuAvailable" class ="menuOption" text="Menu Availability" onClick="clickedOption"/>
+  				<Label id="Report" class ="menuOption" text="Reports" onClick="clickedOption"/>
+  				<Label id="Review" class ="menuOption" text="Reviews" onClick="clickedOption"/>
+  				<Label id="Config" class ="menuOption" text="Configuration" onClick="clickedOption"/>
   			</View>  
   		</View>
   		<View id="loginOption" class="loginHeader top5"> 
-  			<Label id="Consumer"  top="5" class ="menuOption" text="L('GotoConsumer')" onClick="clickedOption"/>
-  			<Label id="SignIn"  top="5" class ="menuOption" text="L('SignIn')" onClick="clickedOption"/>
-  			<Label id="CAccount"  class ="menuOption" text="L('CreateAccount')" onClick="clickedOption"/>
+  			<Label id="Consumer"  top="5" class ="menuOption" text="Go to Consumer" onClick="clickedOption"/>
+  			<Label id="SignIn"  top="5" class ="menuOption" text="Sign In" onClick="clickedOption"/>
+  			<Label id="CAccount"  class ="menuOption" text="Create Account" onClick="clickedOption"/>
   		</View>
   	</View>
   	

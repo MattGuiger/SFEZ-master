@@ -459,11 +459,9 @@ function checkForMenuItemExistence(_categoryId) {
 			}
 		}
 		if (!isAlreadyExist) {
-			alert('i am exists');
 			getMenuItemsFromServer(_categoryId);
 		}
 	} else {
-				alert('i am no');
 		getMenuItemsFromServer(_categoryId);
 	}
 }

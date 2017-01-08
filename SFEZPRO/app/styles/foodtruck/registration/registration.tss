@@ -46,13 +46,6 @@
 	top: 15,
 	borderRadius: 2
 },
-".vendorName": {
-	font: {
-		fontSize: 18,
-		fontFamily: 'Lucida Grande',
-		fontWeight: "bold"
-	}
-},
 
 
 "#maxicanBtn": {

@@ -182,7 +182,7 @@ function createRewardsList() {
 
 		row.add(ptBlncLbl);
 		var ptsNo = $.UI.create('Label', {
-			text : "0",
+			text : "11",
 			visible : false,
 			top : 35,
 			right : 18,
@@ -203,7 +203,7 @@ function createRewardsList() {
 	$.rewardsTable.setData(dataRows);
 
 	$.rewardsTable.addEventListener("click", function(e) {
-		
+
 		if ("ViewDetails" == e.source.id) {
 			var currentObj;
 			if (e.source.extend) {
@@ -226,6 +226,7 @@ function createRewardsList() {
 				e.source.parantObj.remove(e.source.currentObj);
 			}
 		}
+
 	});
 }
 
@@ -240,181 +241,142 @@ function createExpandView(data) {
 		backgroundColor : "#FFF"
 	});
 
-	Alloy.Globals.Services.Vendor.getLoyaltyRewards(function(response) {
-		Ti.API.info(data+"**************data************** " + response);
-			Alloy.Globals.rewardsList = response;
-		    for (var j = 0; j < response.length;j++) {
-			var redeem_gold = response[j].gold_reward_item;
-			var redeem_silver = response[j].silver_reward_item;
-			var redeem_bronze = response[j].bronze_reward_item;
+	for (var i = 0; i < 3; i++) {
+
+		var h1 = Ti.UI.createView({
+			top : 0,
+			left : 0,
+			height : 240,
+			width : "33%",
+			layout : "vertical",
+		});
+
+		var goldImg = $.UI.create('ImageView', {
+			top : 10,
+			height : 40,
+			width : 55,
+			// classes : ["loveImg"],
+		});
+
+		if (i == 0) {
+			goldImg.image = "/images/prize_gold.png";
+		} else if (i == 1) {
+			goldImg.image = "/images/prize_silver.png";
+		} else if (i == 2) {
+			goldImg.image = "/images/prize_bronze.png";
+		}
+
+		h1.add(goldImg);
+
+		var goldLbl = $.UI.create('Label', {
+			text : "Gold",
+			top : 5,
+			left : 0,
+			right:0,
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			font:{
+				fontFamily:"Raleway",
+				fontSize:16,
+				fontWeight:"bold"
+			},
+			classes : ["H1BlkLbl"],
+		});
+
+		h1.add(goldLbl);
+
+		var backView = $.UI.create('View', {
+			top : 5,
+			//left : 43,
+			height : 40,
+			width : 40,
+			layout : "vertical",
+			backgroundImage : "/images/circle.png"
+		});
+
+		h1.add(backView);
+
+		var ptsLbl = $.UI.create('Label', {
+			text : "15",
+			top : 5,
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			//width:"40px",
+			font:{
+				fontFamily:"Raleway",
+				fontSize:14
+			},
+			classes : ["H2BoldLblDef"],
+		});
 		
-			for (var i = 0; i < 3; i++) {
-				var h1 = Ti.UI.createView({
-					top : 0,
-					left : 0,
-					height : 240,
-					width : "33%",
-					layout : "vertical",
-				});
+		if (i == 0) {
+			ptsLbl.text = "15";
+		} else if (i == 1) {
+			ptsLbl.text = "10";
+		} else if (i == 2) {
+			ptsLbl.text = "5";
+		}
 		
-				var goldImg = $.UI.create('ImageView', {
-					top : 10,
-					height : 40,
-					width : 55,
-					// classes : ["loveImg"],
-				});
+		backView.add(ptsLbl);
+
+		var pts = $.UI.create('Label', {
+			text : "pts",
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			top : 0,
+			width:20,
+			font:{
+				fontFamily:"Raleway",
+				fontSize:10
+			},
+			classes : ["H2BlkLbl"],
+			opacity : 0.6
+		});
+
+		backView.add(pts);
+
+		var itemLbl = $.UI.create('Label', {
+			text : "1 sandwitch 1 side & 1 drink",
+			top : 10,
+			left : 10,
+			right : 10,
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			font:{
+				fontFamily:"Raleway",
+				fontSize:14
+			},
+			classes : ["H2BlkLbl"],
+		});
+
+		h1.add(itemLbl);
 		
-				if (i == 0) {
-					goldImg.image = "/images/prize_gold.png";
-				} else if (i == 1) {
-					goldImg.image = "/images/prize_silver.png";
-				} else if (i == 2) {
-					goldImg.image = "/images/prize_bronze.png";
-				}
-		
-				h1.add(goldImg);
-		
-				var goldLbl = $.UI.create('Label', {
-					text : "Gold",
-					top : 5,
-					left : 0,
-					right:0,
-					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-					font:{
-						fontFamily:"Raleway",
-						fontSize:16,
-						fontWeight:"bold"
-					},
-					classes : ["H1BlkLbl"],
-				});
-		
-				h1.add(goldLbl);
-		
-				var backView = $.UI.create('View', {
-					top : 5,
-					//left : 43,
-					height : 40,
-					width : 40,
-					layout : "vertical",
-					backgroundImage : "/images/circle.png"
-				});
-		
-				h1.add(backView);
-		
-				var ptsLbl = $.UI.create('Label', {
-					text : "15",
-					top : 5,
-					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-					//width:"40px",
-					font:{
-						fontFamily:"Raleway",
-						fontSize:14
-					},
-					classes : ["H2BoldLblDef"],
-				});
-				
-				if (i == 0) {
-					ptsLbl.text = "15";
-				} else if (i == 1) {
-					ptsLbl.text = "10";
-				} else if (i == 2) {
-					ptsLbl.text = "5";
-				}
-				
-				backView.add(ptsLbl);
-		
-				var pts = $.UI.create('Label', {
-					text : "pts",
-					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-					top : 0,
-					width:20,
-					font:{
-						fontFamily:"Raleway",
-						fontSize:10
-					},
-					classes : ["H2BlkLbl"],
-					opacity : 0.6
-				});
-		
-				backView.add(pts);
-				
-				
-				if (i == 0) {
-					var itemLbl = $.UI.create('Label', {
-						text : redeem_gold,
-						top : 10,
-						left : 10,
-						right : 10,
-						textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-						font:{
-							fontFamily:"Raleway",
-							fontSize:14
-						},
-						classes : ["H2BlkLbl"],
-					});
-		
-				} else if (i == 1) {
-						var itemLbl = $.UI.create('Label', {
-						text : redeem_silver,
-						top : 10,
-						left : 10,
-						right : 10,
-						textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-						font:{
-							fontFamily:"Raleway",
-							fontSize:14
-						},
-						classes : ["H2BlkLbl"],
-					});
-				} else if (i == 2) {
-						var itemLbl = $.UI.create('Label', {
-						text : redeem_bronze,
-						top : 10,
-						left : 10,
-						right : 10,
-						textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-						font:{
-							fontFamily:"Raleway",
-							fontSize:14
-						},
-						classes : ["H2BlkLbl"],
-					});
-				}
-				
-				h1.add(itemLbl);
-				
-				var redeemImg = $.UI.create('ImageView', {
-					top : 0,
-					width : 70,
-					height : 43,
-				});
-		
-				if (i == 0) {
-					goldLbl.text = "Gold";
-					h1.add(redeemImg);
-					redeemImg.image = "/images/redeem.png";
-				} else if (i == 1) {
-					goldLbl.text = "Silver";
-					h1.add(redeemImg);
-					redeemImg.image = "/images/redeem.png";
-				} else if (i == 2) {
-					goldLbl.text = "Bronze";
-					h1.add(redeemImg);
-					redeemImg.image = "/images/redeem.png";
-				}
-		
-				//var itemLbl = $.UI.create('Label', {
-				//	text : "1 sandwitch 1 side & 1 drink",
-				//	top : 10,
-				//	left : 10,
-				//	classes : ["H2BlkLbl"],
-				//});
-		
-				//h1.add(itemLbl);
-				extView.add(h1);
-			}
-		}		 
-	});
+		var redeemImg = $.UI.create('ImageView', {
+			top : 0,
+			width : 70,
+			height : 43,
+		});
+
+		if (i == 0) {
+			goldLbl.text = "Gold";
+		} else if (i == 1) {
+			goldLbl.text = "Silver";
+			h1.add(redeemImg);
+			redeemImg.image = "/images/redeem.png";
+		} else if (i == 2) {
+			goldLbl.text = "Bronze";
+			h1.add(redeemImg);
+			redeemImg.image = "/images/redeem.png";
+		}
+
+		//var itemLbl = $.UI.create('Label', {
+		//	text : "1 sandwitch 1 side & 1 drink",
+		//	top : 10,
+		//	left : 10,
+		//	classes : ["H2BlkLbl"],
+		//});
+
+		//h1.add(itemLbl);
+		extView.add(h1);
+
+	}
+
 	return extView;
 }
 

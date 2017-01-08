@@ -64,7 +64,7 @@
 }
 
 ".phoneField": {
-	hintText: L("SMSWhatsApp"),
+	hintText: "SMS/WhatsApp",
 	font: {fontSize: 14 },
 	top: 10,
 	left: 15,

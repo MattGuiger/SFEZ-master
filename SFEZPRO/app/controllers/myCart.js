@@ -15,7 +15,7 @@ var totalAmount,
     bottomView,
     placeOrderBtn;
 var selectedMenuItems = args.selectedItems;
-Ti.API.info("All Itemssss@@@ "+JSON.stringify(selectedMenuItems));
+
 var pickupRadioButton,
     deliveryRadioButton,
     expandedView;
@@ -254,9 +254,9 @@ function sendOrderCreationConfirmationToServer() {
 function convertCartToOrder() {
 	var params = {
 		requestData : {
-			"customer[first_name]" : "Matt",
-			"customer[last_name]" : "Guiger",
-			"customer[email]" : "Matt.Guiger@mgmail.com",
+			"customer[first_name]" : "Sapna",
+			"customer[last_name]" : "Sharma",
+			"customer[email]" : "sapna.sharma@oodlestechnologies.com",
 			"shipping" : "free-shipping",
 			"gateway" : "dummy",
 			"bill_to[first_name]" : "Sapna",
@@ -266,7 +266,9 @@ function convertCartToOrder() {
 			"bill_to[county]" : "US",
 			"bill_to[country]" : "US",
 			"bill_to[postcode]" : "110001",
-			"ship_to" : "bill_to"
+			"ship_to" : "bill_to",
+			"unit" : "1293775419400520543",
+			"company" : "1293768990807556920"
 		},
 		cartId : args.cartId
 	};
@@ -320,88 +322,13 @@ var payInPerson = function() {
 function createMyOrder() {
 	var subTotal = 0;
 	var newData = [];
-	
 	for (var i = 0; i < selectedMenuItems.length; i++) {
-		Ti.API.info("!!!!!!!!!@@@@@@@@@@@ Final creation table data" +i+"^^^^" +JSON.stringify(selectedMenuItems[i]));
 		var ithProductTotalPrice = totalProductPrice(selectedMenuItems[i].price, selectedMenuItems[i].quantity);
 		subTotal = getTotalAmount(Number(subTotal), Number(ithProductTotalPrice));
-		/*var selectedModifier = null;
-		if(selectedMenuItems[i].selectedModifiers){
-			alert(selectedMenuItems[i].selectedModifiers);
-			selectedModifier = selectedMenuItem[i].selectedModifiers;
-			Ti.API.info("selected modifier::----"+ JSON.stringify(selectedModifier));
-		}
-		else{
-			Ti.API.info("selected modifier not available::----");
-		}
-		*/
-		var extra_str = "";
-		var options_str = "";
-		
-		if (selectedMenuItems[i].selectedModifiers) {
-			var multiple = selectedMenuItems[i].selectedModifiers.multiple;
-			//alert(multiple);
-			if(multiple){
-				for (var m = 0; m < multiple.length; m++) {
-					//Ti.API.info(JSON.stringify(multiple[i]));
-					var keys = Object.keys(multiple[m]);
-					//alert(keys);
-					var value = multiple[m][keys];
-	
-					for (var j = 0; j < selectedMenuItems[i].modifiers.length; j++) {
-						var variations = selectedMenuItems[i].modifiers[j][keys].variations;
-						//alert(variations[value].title);
-						if (options_str != "") {
-							options_str = options_str + ", " + variations[value].title;
-						} else {
-							options_str = variations[value].title;
-						}
-					}
-	
-				}
-			}
-			var single = selectedMenuItems[i].selectedModifiers.single;
-			if(single){
-				for (var m = 0; m < single.length; m++) {
-					//Ti.API.info(JSON.stringify(multiple[i]));
-					var keys = Object.keys(single[m]);
-					//alert(keys);
-					var value = single[m][keys];
-	
-					for (var j = 0; j < selectedMenuItems[i].modifiers.length; j++) {
-						var variations = selectedMenuItems[i].modifiers[j][keys].variations;
-						//alert(variations[value].title);
-						if (extra_str != "") {
-							extra_str = extra_str + ", " + selectedMenuItems[i].modifiers[j][keys].title + ": " +variations[value].title;
-						} else {
-							extra_str = selectedMenuItems[i].modifiers[j][keys].title + ": " + variations[value].title;
-						}
-					}
-	
-				}
-			}
-			//alert(options_str + "^^^"+ extra_str);
-			Ti.API.info(options_str + "^^^^^^^^^^^^^^^^^^^^^^^^"+ extra_str);
-		} else {
-			Ti.API.info("not aval");
-		}
-
-	var descLbl = "";
-	if(options_str!= ""){
-		descLbl = descLbl + options_str;
-		if(extra_str != ""){
-			descLbl = descLbl + "\n"+ extra_str;
-		}
-	}
-	else if(extra_str != ""){
-			descLbl = descLbl + extra_str;
-		}
-		 
-		
 		var listData = {
 			baseView : {
 				productId : selectedMenuItems[i].productId,
-				modifiers : selectedMenuItems[i].modifiers, 
+				modifiers : selectedMenuItems[i].modifiers,
 				description : selectedMenuItems[i].description
 			},
 			quantitylbl : {
@@ -411,9 +338,8 @@ function createMyOrder() {
 				text : " x " + selectedMenuItems[i].name
 			},
 			desclbl : {
-				height : descLbl == "" ?0:Ti.UI.SIZE,
-				visible : descLbl == "" ?false: true,
-				text:descLbl,
+				height : 0,
+				visible : false
 			},
 			pricelbl : {
 				text : 'R$' + ithProductTotalPrice
@@ -649,7 +575,7 @@ function createMyOrder() {
 		right : 40
 	});
 	placeOrderBtn = $.UI.create('Button', {
-		//left : 0,
+		left : 0,
 		title : L('MyOrderPlaceOrder'),
 		classes : ["searchLocation"],
 		width : 120,
@@ -663,7 +589,7 @@ function createMyOrder() {
 		borderRadius : 3,
 	});
 	payView.add(placeOrderBtn);
-	//payView.add(payInPersonBtn); comented by moiz as need it to be hidden as per requirement
+	payView.add(payInPersonBtn);
 	bottomView.add(payView);
 
 	var placeOrderView = $.UI.create('View', {
@@ -711,8 +637,6 @@ $.selectedMenuItemList.addEventListener('itemclick', function(e) {
 	switch(e.bindId) {
 	case "editImg":
 		Ti.API.info("**************selected **********before********* " + JSON.stringify(selectedMenuItems[itemIndex]));
-		
-		//Ti.API.info("**************simp **********data********* " + JSON.stringify(simpData));
 		Alloy.createController('menuItemDetails', {
 			menuItem : selectedMenuItems[itemIndex],
 			callback : function(updatedQuantity, _selectedModifiers) {

@@ -8,7 +8,7 @@ function createOrderList() {
 			left : 0,
 			right : 0,
 			backgroundColor : Alloy.Globals.mapsBackgroundColor,
-			id : "ViewDetails",
+			id : "ViewDetails"+i,
 			extend : true,
 		});
 
@@ -123,7 +123,7 @@ function createOrderList() {
 	$.orderListTable.setData(dataRows);
 	$.orderListTable.addEventListener("click", function(e) 
 	{
-			if ("ViewDetails" == e.source.id) {
+			if ("ViewDetails0" == e.source.id) {
 			var currentObj;
 			if (e.source.extend) {
 				e.source.extend = false;
@@ -185,13 +185,24 @@ function createExpandView(data) {
 			classes : ["H1BlkLbl"],
 		});
 		extView.add(lblOrderNumber);
-		var imgbarcode = $.UI.create('ImageView', {
+		
+		
+		var QRCodeView = require('lib/qrcode/qrcode');
+		var imgbarcode = new QRCodeView('Hello World!', 1, {
+			top : 5,
+			height : 228,
+			width : 226,
+		});
+		//win1.add(qrCodeView);
+
+		
+		/*var imgbarcode = $.UI.create('ImageView', {
 			top : 5,
 			height : 228,
 			width : 226,
 			image : '/images/barcode.png'
 			// classes : ["loveImg"],
-		});
+		});*/
 		extView.add(imgbarcode);
 	return extView;
 }

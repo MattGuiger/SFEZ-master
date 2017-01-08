@@ -165,14 +165,7 @@ AppServices.Vendor.GetList = function(callback) {
 		}
 	});
 };
-AppServices.Vendor.GetMenuImage = function(callback,compId,menuItemId,_image) {
-	var url = "http://198.199.86.137:1337/api/v1/mol/" + "companies/"+compId+"/menuitems/"+menuItemId;
-	Ti.API.info('Menu ImageURL:'+ url);
-	serviceUtility.get(url, function(e) {
-		Ti.API.info('companies:: GetList' + JSON.stringify(e));
-		callback(e,_image);
-	});
-};
+
 AppServices.Vendor.GetCategories = function(orderSysId, callback) {
 	//Authorization: Bearer XXXX
 	var url = "https://api.molt.in/v1/categories?company=" + orderSysId;
@@ -246,30 +239,7 @@ AppServices.User.sendUserDeviceTokenToServer = function(id) {
 		}, "PUT", true);
 	}
 };
-AppServices.User.sendUnitManagerDeviceTokenToServer = function(info) {
-	var role = "UNITMGR";
-	if (Alloy.Globals.getData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO)) {
-		role = Alloy.Globals.getData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO).user.role;
-	}
-	
-	var url = "";
-//	alert(info.unitmanagerdetails.company_id + "****" + info.unitmanagerdetails.id);
-	url = apiUrl+"companies/"+info.unitmanagerdetails.company_id+"/units/"+info.unitmanagerdetails.id;
-	
-	Ti.API.info("Unit manager service url-------->"+url);
-	
-	if (Alloy.Globals.getData("deviceId") && (Alloy.Globals.getData("deviceId") != "")) {
-		var requesData = {
-			"device_id" : Alloy.Globals.getData("deviceId")
-			//"user_email" : (role == "CUSTOMER") ? "sapna.sharma@oodlestechnologies.com" : "pankaj.kumar@oodlestechnologies.com"
-		};
-		serviceUtility.post(url, requesData, function(e) {
-			Ti.API.info('post response:: for update device token for unit manager' + JSON.stringify(e));
-		}, function(e) {
-			Ti.API.info('post error response:: for update device token unit manager' + e);
-		}, "PUT", true);
-	}
-};
+
 AppServices.Consumer.sendOrderCreationConfirmation = function(params, callback) {
 	var url = "http://6f8efd0e.ngrok.io/push/eventTrack";
 	serviceUtility.post(url, params, function(e) {
@@ -341,13 +311,7 @@ AppServices.Vendor.getCompany = function(_id, callback) {
 		callback(e);
 	});
 };
-AppServices.Vendor.getUnit = function(_id, callback) {
-	var url = apiUrl + "units?unit_mgr_id=" + _id;
-	serviceUtility.get(url, function(e) {
-		Ti.API.info('post response:: for getunit' + JSON.stringify(e));
-		callback(e);
-	});
-};
+
 AppServices.Vendor.checkIn = function(params, callback) {
 	var url = apiUrl + "checkins";
 	serviceUtility.post(url, params, function(e) {
@@ -381,21 +345,5 @@ AppServices.Vendor.getOrderItems = function(orderId, callback) {
 		}
 	});
 };
-AppServices.Vendor.getLoyaltyRewards = function(callback) {
-	var url = "http://198.199.86.137:1337/api/v1/rel/companies/1001/loyalty_rewards";
-	//TODO make company id dynamic
-	serviceUtility.get(url, function(e) {
-		Ti.API.info('get response:: for orders' + JSON.stringify(e));
-		//callback(JSON.stringify(e));
-		callback(e);
-		/*
-		if (e.result.length > 0) {
-			callback(e.result);
-		} else {
-			callback([]);
-		}*/
-	});
-};
-
 
 module.exports = AppServices;

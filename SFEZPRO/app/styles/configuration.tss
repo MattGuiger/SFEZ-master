@@ -2,7 +2,7 @@
 	layout: "vertical"
 }
 ".nxtBtn": {
-	title: L("save"),
+	title: "SAVE",
 	color: "#FFF",
 	font: {
 		fontSize: 18,
@@ -106,7 +106,7 @@
 },
 
 ".loginField": {
-	hintText: "L(exdollarsetc)",
+	hintText: "ex. $5, $6, etc... ",
 	hintTextColor:Alloy.Globals.lightTextColor,
 	top: 10,
 	left: 15,

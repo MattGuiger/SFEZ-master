@@ -381,7 +381,7 @@ Alloy.Globals.currentLng = 0.0;
  });
  };*/
 
-Alloy.Globals.GetDistanceFromLocation = function(sLat, sLng,isMile) {
+Alloy.Globals.GetDistanceFromLocation = function(sLat, sLng) {
 	var lat1 = Alloy.Globals.currentLat;
 	var lon1 = Alloy.Globals.currentLng;
 	var lat2 = sLat;
@@ -394,10 +394,7 @@ Alloy.Globals.GetDistanceFromLocation = function(sLat, sLng,isMile) {
 	var KM = 12742 * Math.asin(Math.sqrt(a));
 	// 2 * R; R = 6371 km
 	//return (KM * MILES_TO_KM) + " mi";
-	if(isMile)
-		return (parseFloat(Math.round(KM * 10) / 10)*0.621371).toFixed(1) +"ml";
-	else
-		return (Math.round(KM * 10) / 10).toFixed(1) + " km";
+	return (Math.round(KM * 10) / 10).toFixed(1) + " km";
 };
 
 //Set Data In Application Local Storage
@@ -439,9 +436,7 @@ gcm.registerForPushNotifications({
 		//alert('******* success, ' + ev.deviceToken);
 		
 		Alloy.Globals.androidDeviceToken =  ev.deviceToken;
-		//alert(Alloy.Globals.androidDeviceToken);
 		Ti.API.info('******* Alloy.Globals.androidDeviceToken, ' + ev.deviceToken);
-		Alloy.Globals.setData("deviceId", ev.deviceToken);
 	},
 	error: function (ev) {
 		// when an error occurs
@@ -449,8 +444,7 @@ gcm.registerForPushNotifications({
 	},
 	callback: function () {
 		// when a gcm notification is received WHEN the app IS IN FOREGROUND
-		//alert('hellow yellow!');
-		alert(evt);
+		alert('hellow yellow!');
 	},
 	unregister: function (ev) {
 		// on unregister 
@@ -462,7 +456,6 @@ gcm.registerForPushNotifications({
 		// and the app WAS RUNNING (=> RESUMED)
 		// (again don't worry, we'll see more of this later)
 		Ti.API.info('******* data (resumed) ' + JSON.stringify(data));
-		alert('******* data (resumed) ' + JSON.stringify(data));
 	}
 });
 

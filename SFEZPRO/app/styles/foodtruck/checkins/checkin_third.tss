@@ -8,8 +8,6 @@
 	color: Alloy.Globals.buttonColor
 },
 
-// Edited by Aryvart - Open
-/*
 "#foodParkName":{
 	top: 25,
 	left: 30,
@@ -23,20 +21,6 @@
 	},
 	right: 5
 }
-*/
-"#foodParkName":{
-	top: 25,
-	left: 30,
-	width: "90%",
-	maxLines: "5",
-	font: {
-		fontSize: 16,
-		fontFamily: 'Lucida Grande',
-		fontWeight: "bold"
-	},
-	right: 5
-}
-// Edited by Aryvart - Closed
 
 ".blkLbl":{
 	top: 35,

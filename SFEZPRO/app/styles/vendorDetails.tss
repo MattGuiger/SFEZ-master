@@ -4,8 +4,8 @@
 	layout: "vertical"
 }
 ".firstPic": {
-	/*image: "/images/consumerordering/food truck-01.png",*/
-	top: 5,
+	image: "/images/consumerordering/food truck-01.png",
+	top: 0,
 	height: 150
 }
 ".container": {
@@ -68,7 +68,7 @@
 
 "#menuorderLbl":{
 	textAlign: "center",
-	text: L("MENUORDER"),
+	text: "MENU/ORDER",
 	height: "30",
 	width: "150",
 	font: {

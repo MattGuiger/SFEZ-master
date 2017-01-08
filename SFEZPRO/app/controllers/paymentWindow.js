@@ -4,50 +4,12 @@ var toast = require("toast"),
     SFEZKeys = require("SFEZKeys");
 (OS_IOS) ? ($.win.title = "Payment") : ($.winTitle.text = "Payment");
 $.amountValueLabel.text = 'R$' + args.amount;
-var creditCardDetails = Ti.App.Properties.getObject("CreditCardDetails", null);
-Ti.API.info(creditCardDetails);
-var isEditMode = false;
-var selectedMonthIndex;
-var selectedYearIndex;
-if(creditCardDetails == null){
-	creditCardDetails = {
-	cardNo: "",
-	expmonth: 0,
-	year	: 0,
-	cvv : "",
-	cardholdername :"",
-};
-	isEditMode = true;
-	$.cardNumField.value = "";
-	selectedMonthIndex =  0;
-	selectedYearIndex = 0;
-	$.cardHolderNameField.value = "";
-	$.cvcField.value  = "";
-}
-else{
-	$.cardNumField.value = "xxxx-xxxx-xxxx-"+(creditCardDetails.cardNo).toString().slice(-4);
-	selectedMonthIndex =  creditCardDetails.expmonth;
-	selectedYearIndex = creditCardDetails.year;
-	$.cardHolderNameField.value = creditCardDetails.cardholdername;
-	$.cardNumField.editable = false;
-	$.cvcField.value = creditCardDetails.cvv;
-}
-
-/*
- {
-	cardNo: "",
-	expmonth: "",
-	year	: "",
-	cvv : "",
-	cardholdername :"",
-}
- */
-//var cardDetail = Alloy.Globals.getData(SFEZKeys.KEYS.CONSUMER_CARD_DETAIL);
-//$.cardNumField.value = (cardDetail && cardDetail.cardNum) ? cardDetail.cardNum : "378282246310005";
-//$.cardNumField.editable = false;
-//$.cardHolderNameField.value = (cardDetail && cardDetail.cardHolderName) ? cardDetail.cardHolderName : "Sapna";
-//var selectedMonthIndex = (cardDetail && cardDetail.mothPickerSelectedIndex) ? cardDetail.mothPickerSelectedIndex : 0;
-//var selectedYearIndex = (cardDetail && cardDetail.yearPickerSelectedIndex) ? cardDetail.yearPickerSelectedIndex : 0;
+var cardDetail = Alloy.Globals.getData(SFEZKeys.KEYS.CONSUMER_CARD_DETAIL);
+$.cardNumField.value = (cardDetail && cardDetail.cardNum) ? cardDetail.cardNum : "378282246310005";
+$.cardNumField.editable = false;
+$.cardHolderNameField.value = (cardDetail && cardDetail.cardHolderName) ? cardDetail.cardHolderName : "Sapna";
+var selectedMonthIndex = (cardDetail && cardDetail.mothPickerSelectedIndex) ? cardDetail.mothPickerSelectedIndex : 0;
+var selectedYearIndex = (cardDetail && cardDetail.yearPickerSelectedIndex) ? cardDetail.yearPickerSelectedIndex : 0;
 
 function closeWindow() {
 	$.getView().close();
@@ -183,34 +145,13 @@ function hideKeyboard() {
 	$.cvcField.blur();
 	$.cardHolderNameField.blur();
 }
-$.editLabel.addEventListener('click', function(e){
-	isEditMode = true;
-	$.cardNumField.value = "";
-	$.cardNumField.editable = true;
-	
-});
+
 $.save.addEventListener('click', function(e) {
 	if (!applyValidations()) {
 		return;
 	}
-	if(isEditMode){
-		var cardHolderNum =  $.cardNumField.getValue();
-	}
-	else{
-		var cardHolderNum = creditCardDetails.cardNo;
-	}
-	isEditMode = false;
-	$.cardNumField.editable  = false;
-	creditCardDetails = {
-	cardNo: cardHolderNum,
-	expmonth: selectedMonthIndex,
-	year	: selectedYearIndex,
-	cvv : $.cvcField.getValue(),
-	cardholdername : $.cardHolderNameField.getValue(),
-};
-	Ti.App.Properties.setObject("CreditCardDetails",creditCardDetails);
 	Alloy.Globals.setData(SFEZKeys.KEYS.CONSUMER_CARD_DETAIL, {
-		cardNum :cardHolderNum,
+		cardNum : $.cardNumField.getValue(),
 		month : $.monthField.monthPicker.getSelectedRow(0).getTitle(),
 		year : $.yearField.yearPicker.getSelectedRow(0).getTitle(),
 		cvv : $.cvcField.getValue(),
