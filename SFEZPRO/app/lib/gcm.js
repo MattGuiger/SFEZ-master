@@ -6,7 +6,7 @@
 	    message = serviceIntent.hasExtra('message') ? serviceIntent.getStringExtra('message') : '',
 	    type = serviceIntent.hasExtra('type') ? serviceIntent.getStringExtra('type') : '',
 	    order = serviceIntent.hasExtra('order') ? serviceIntent.getStringExtra('order') : '',
-	    order_status = serviceIntent.hasExtra('order_status') ? serviceIntent.getStringExtra('order_status') : '',
+	    status = serviceIntent.hasExtra('status') ? serviceIntent.getStringExtra('status') : '',
 
 	    notificationId = (function() {
 		// android notifications ids are int32
