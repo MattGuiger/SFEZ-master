@@ -11,7 +11,7 @@
 			message : intent.getStringExtra('message'),
 			type : intent.getStringExtra('type'),
 			order : intent.getStringExtra('order'),
-			order_status : intent.getStringExtra('order_status'),
+			status : intent.getStringExtra('status'),
 			inBackground : true
 		};
 	}
