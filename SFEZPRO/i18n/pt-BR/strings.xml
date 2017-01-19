@@ -39,6 +39,7 @@
     <string name="logoutFailure">Falha ao tentar sair</string>
     <string name="loggingOut">Saindo...</string>
     <string name="facebookLogoutFailure">Falha ao tentar sair do facebook</string>
+     
     //Foodtruck
     <string name="foodtruckName">Nome do Food Truck:</string>
     <string name="phone">Telefone de contato:</string>
@@ -357,4 +358,39 @@
 <string name="ConfigurationDeliveryTime">Tempo de Entrega</string>
 <string name="ConfigurationDeliveryCharge">Taxa de Entrega</string>
 <string name="ConfigurationFoodParkManaged">Gerenciado pelo Food Park</string>
+	
+	<string name="Loyalty">Loyalty</string>
+	<string name="AlokPatil">Alok Patil</string>
+	<string name="GotoVendor">Go to Vendor</string>
+	<string name="PacoTacaos">Paco's Tacaos</string>
+	<string name="Reporting">Reporting</string>
+	<string name="GotoConsumer">Go to Consumer</string>
+	<string name="Configuration">Configuration</string>
+	<string name="Theeasywaytoorderstreetfood">The easy way to order street food</string>
+	<string name="MapRoute">Map Route</string>
+	<string name="PaymentAmount">Payment Amount:</string>
+	<string name="CardNumber">Card Number</string>
+	<string name="ExpirationDate">Expiration Date</string>
+	<string name="CardHolderName">Card Holder Name</string>
+	<string name="Entercardholdername">Enter card holder name</string>
+	<string name="IamaVendorandwouldliketosellfood">I am a Vendor and would like to sell food</string>
+	<string name="TermsandConditions">Terms & Conditions</string>
+	<string name="MaxicanCarneAsadaSalads">Maxican, Carne Asada, Salads</string>
+	<string name="TypicalHours">Typical Hours: </string>
+	<string name="CurrentStatus">Current Status: </string>
+	<string name="Rating">Rating: </string>
+	<string name="CurrentDistance">Current Distance: </string>
+	<string name="CurrentLocation">Current Location: </string>
+	<string name="exdollarsetc">ex. $5, $6, etc...</string>
+	<string name="Entercardnumber">Enter card number</string>
+	<string name="ExtraBeef">Extra Beef</string>
+	<string name="SMSWhatsApp">SMS/WhatsApp</string>	
+	<string name="MENUORDER">MENU/ORDER</string>	
+	<string name="CVVCVC">CVV/ CVC</string>
+	 <string name="BeefTacos">Beef Tacos</string>
+	<string name="TellusAboutYourExperience">Tell us About Your Experience!</string>
+	<string name="Very">Very</string>
+	<string name="VeryHappy">Very Happy</string>
+	<string name="IndivReviewquestionques">IndivReviewquestion?</string>
+	
 </resources>

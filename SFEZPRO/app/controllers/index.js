@@ -222,19 +222,21 @@ Alloy.Globals.notifyUnregister = function(e) {
 	alert("unregister\n" + e);
 };
 Alloy.Globals.notifyData = function(e) {
+	Ti.API.info("*************notifyData**************");
 	require("notificationCallBack").notificationCallBack(e);
 };
 //push notification for android and iOS
 var notifySuccessGetId = function(id) {
 	Ti.API.error("push id got :" + id);
-	if (Alloy.Globals.getData("deviceId") == null) {
+	/*if (Alloy.Globals.getData("deviceId") == null) {
 		Alloy.Globals.setData("deviceId", id);
-	}
+	}*/
 	if (OS_ANDROID) {
 		Alloy.Globals.isPushEnabled = true;
 	}
 };
 function registerGCM() {
+	Ti.App.Properties.setBool("RegisteredGCM",false);
 	Ti.API.info("**************registerGCM*****************");
 	require('pushNotification').getPushNotification({
 		success : notifySuccessGetId,
@@ -253,5 +255,6 @@ if (!ENV_DEV) {
 	waitForOnline();
 }
 Alloy.createController('navigationDrawerContent/home').getView().open();
+
 
 //Alloy.Globals.Services.User.sendUserDeviceTokenToServer();

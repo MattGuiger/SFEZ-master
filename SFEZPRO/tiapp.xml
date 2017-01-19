@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <sdk-version>5.2.2.GA</sdk-version>
+    <sdk-version>5.2.0.GA</sdk-version>
     <deployment-targets>
         <target device="mobileweb">false</target>
-        <target device="iphone">true</target>
-        <target device="ipad">true</target>
+        <target device="iphone">false</target>
+        <target device="ipad">false</target>
         <target device="android">true</target>
     </deployment-targets>
-    <id>com.streetfoodez</id>
+    <id>com.streetfoodez.sfez</id>
     <name>SFEZ</name>
     <version>1.0</version>
     <publisher>not specified</publisher>
@@ -19,7 +19,7 @@
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <!-- <guid>0513031a-00ba-4de1-9999-6fc024c2e047</guid>-->
-    <guid>9fff8839-e7a9-45c2-9ddd-575f8b5b7e80</guid>
+    <guid>245649e5-aa56-47ba-9666-67a6727571fa</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>
@@ -100,16 +100,16 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <property name="GCM_sender_id" type="string">470156358649</property>
+    <property name="GCM_sender_id" type="string">7518678364</property>
     <modules>
         <module platform="android" version="1.4.1">com.tripvi.drawerlayout</module>
         <module platform="commonjs">ti.cloud</module>
-        <module platform="android">ti.map</module>
         <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
-        <module platform="android">ti.barcode</module>
         <module platform="iphone">ti.barcode</module>
+        <module platform="android">ti.barcode</module>
         <module platform="android">ti.cloudpush</module>
         <module platform="android">com.oodles.androidcurrentlocation</module>
         <module platform="android">net.iamyellow.gcmjs</module>

@@ -4,6 +4,8 @@ exports.getPushNotification = function(params) {
 		success : function(ev) {
 			Ti.API.info('******* success, ' + ev.deviceToken);
 			params.success(ev.deviceToken);
+			Ti.App.Properties.setBool("RegisteredGCM",true);
+			Alloy.Globals.setData("deviceId", ev.deviceToken);
 		},
 		error : function(ev) {
 			params.error(ev.error);
@@ -31,7 +33,10 @@ exports.getPushNotification = function(params) {
 
 	if (Ti.Platform.osname === "android") {
 		var gcm = require('net.iamyellow.gcmjs');
-
+		var isRegisteredGCM = Ti.App.Properties.getBool("RegisteredGCM");
+		if (isRegisteredGCM == true){
+			return;
+		}
 		var pendingData = gcm.data;
 		if (pendingData && pendingData !== null) {
 			// if we're here is because user has clicked on the notification
