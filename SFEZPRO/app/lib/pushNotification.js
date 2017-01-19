@@ -2,6 +2,8 @@ exports.getPushNotification = function(params) {
 	var notificationParams = {
 		types : [Titanium.Network.NOTIFICATION_TYPE_BADGE, Titanium.Network.NOTIFICATION_TYPE_ALERT, Titanium.Network.NOTIFICATION_TYPE_SOUND],
 		success : function(ev) {
+			Ti.App.Properties.setBool("RegisteredGCM",true);
+			Alloy.Globals.setData("deviceId", ev.deviceToken);
 			Ti.API.info('******* success, ' + ev.deviceToken);
 			params.success(ev.deviceToken);
 		},
@@ -31,6 +33,11 @@ exports.getPushNotification = function(params) {
 
 	if (Ti.Platform.osname === "android") {
 		var gcm = require('net.iamyellow.gcmjs');
+		
+		var isRegisteredGCM = Ti.App.Properties.getBool("RegisteredGCM");
+		if (isRegisteredGCM == true){
+			return;
+		}
 
 		var pendingData = gcm.data;
 		if (pendingData && pendingData !== null) {

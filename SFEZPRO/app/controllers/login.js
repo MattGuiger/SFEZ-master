@@ -1,7 +1,7 @@
 var SFEZKeys = require("SFEZKeys"),
     utils = require("utils");
 //Alloy.Globals.Facebook.permissions = [FACEBOOK_APP_PERMISSIONS];
-Alloy.Globals.generateDeviceToken();
+//Alloy.Globals.generateDeviceToken();
 Alloy.Globals.Facebook.initialize();
 
 /*$.windowSignIn.barColor = Alloy.Globals.navBarColor;
@@ -96,7 +96,7 @@ function updateLoginStatus(e) {
 								xhr.open('GET', "http://graph.facebook.com/" + result.id + "/picture?width=300&height=300");
 								xhr.send();
 
-								Alloy.Globals.registerGlobalChanelPush();
+								//Alloy.Globals.registerGlobalChanelPush();
 
 								if (Ti.App.Properties.getString("myhome") == "MMF") {
 									//Alloy.Globals.baseView.add(Alloy.createController('mapmyfood').getView());

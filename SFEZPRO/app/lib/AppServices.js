@@ -229,7 +229,7 @@ AppServices.User.sendUserDeviceTokenToServer = function(id) {
 	}
 	if (Alloy.Globals.getData("deviceId") && (Alloy.Globals.getData("deviceId") != "")) {
 		var requesData = {
-			"device_id" : Alloy.Globals.getData("deviceId")
+			"gcm_id" : Alloy.Globals.getData("deviceId")
 			//"user_email" : (role == "CUSTOMER") ? "sapna.sharma@oodlestechnologies.com" : "pankaj.kumar@oodlestechnologies.com"
 		};
 		serviceUtility.post(url, requesData, function(e) {

@@ -100,7 +100,7 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <property name="GCM_sender_id" type="string">470156358649</property>
+    <property name="GCM_sender_id" type="string">7518678364</property>
     <modules>
         <module platform="android" version="1.4.1">com.tripvi.drawerlayout</module>
         <module platform="commonjs">ti.cloud</module>

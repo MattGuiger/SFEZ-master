@@ -418,44 +418,44 @@ Alloy.Globals.setData = setData;
 Alloy.Globals.getData = getData;
 
 
-var gcm = require('net.iamyellow.gcmjs');
-
-var pendingData = gcm.data;
-if (pendingData && pendingData !== null) {
-	// if we're here is because user has clicked on the notification
-	// and we set extras for the intent 
-	// and the app WAS NOT running
-	// (don't worry, we'll see more of this later)
-	
-	Ti.API.info('******* data (started) ' + JSON.stringify(pendingData));
-}
-
-gcm.registerForPushNotifications({
-	success: function (ev) {
-		// on successful registration
-		//alert('******* success, ' + ev.deviceToken);
-		
-		Alloy.Globals.androidDeviceToken =  ev.deviceToken;
-		Ti.API.info('******* Alloy.Globals.androidDeviceToken, ' + ev.deviceToken);
-	},
-	error: function (ev) {
-		// when an error occurs
-		Ti.API.info('******* error, ' + ev.error);
-	},
-	callback: function () {
-		// when a gcm notification is received WHEN the app IS IN FOREGROUND
-		alert('hellow yellow!');
-	},
-	unregister: function (ev) {
-		// on unregister 
-		Ti.API.info('******* unregister, ' + ev.deviceToken);
-	},
-	data: function (data) {
-		// if we're here is because user has clicked on the notification
-		// and we set extras in the intent 
-		// and the app WAS RUNNING (=> RESUMED)
-		// (again don't worry, we'll see more of this later)
-		Ti.API.info('******* data (resumed) ' + JSON.stringify(data));
-	}
-});
+// var gcm = require('net.iamyellow.gcmjs');
+// 
+// var pendingData = gcm.data;
+// if (pendingData && pendingData !== null) {
+	// // if we're here is because user has clicked on the notification
+	// // and we set extras for the intent 
+	// // and the app WAS NOT running
+	// // (don't worry, we'll see more of this later)
+// 	
+	// Ti.API.info('******* data (started) ' + JSON.stringify(pendingData));
+// }
+// 
+// gcm.registerForPushNotifications({
+	// success: function (ev) {
+		// // on successful registration
+		// //alert('******* success, ' + ev.deviceToken);
+// 		
+		// Alloy.Globals.androidDeviceToken =  ev.deviceToken;
+		// Ti.API.info('******* Alloy.Globals.androidDeviceToken, ' + ev.deviceToken);
+	// },
+	// error: function (ev) {
+		// // when an error occurs
+		// Ti.API.info('******* error, ' + ev.error);
+	// },
+	// callback: function () {
+		// // when a gcm notification is received WHEN the app IS IN FOREGROUND
+		// alert('hellow yellow!');
+	// },
+	// unregister: function (ev) {
+		// // on unregister 
+		// Ti.API.info('******* unregister, ' + ev.deviceToken);
+	// },
+	// data: function (data) {
+		// // if we're here is because user has clicked on the notification
+		// // and we set extras in the intent 
+		// // and the app WAS RUNNING (=> RESUMED)
+		// // (again don't worry, we'll see more of this later)
+		// Ti.API.info('******* data (resumed) ' + JSON.stringify(data));
+	// }
+// });
 

@@ -222,6 +222,7 @@ Alloy.Globals.notifyUnregister = function(e) {
 	alert("unregister\n" + e);
 };
 Alloy.Globals.notifyData = function(e) {
+	Ti.API.info("*************notify data**************");
 	require("notificationCallBack").notificationCallBack(e);
 };
 //push notification for android and iOS
@@ -235,6 +236,7 @@ var notifySuccessGetId = function(id) {
 	}
 };
 function registerGCM() {
+	Ti.App.Properties.setBool("RegisteredGCM",false);
 	Ti.API.info("**************registerGCM*****************");
 	require('pushNotification').getPushNotification({
 		success : notifySuccessGetId,
