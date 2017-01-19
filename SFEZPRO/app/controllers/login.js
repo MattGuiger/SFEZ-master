@@ -1,7 +1,7 @@
 var SFEZKeys = require("SFEZKeys"),
     utils = require("utils");
 //Alloy.Globals.Facebook.permissions = [FACEBOOK_APP_PERMISSIONS];
-//Alloy.Globals.generateDeviceToken();
+Alloy.Globals.generateDeviceToken();
 Alloy.Globals.Facebook.initialize();
 
 /*$.windowSignIn.barColor = Alloy.Globals.navBarColor;
@@ -96,7 +96,7 @@ function updateLoginStatus(e) {
 								xhr.open('GET', "http://graph.facebook.com/" + result.id + "/picture?width=300&height=300");
 								xhr.send();
 
-								//Alloy.Globals.registerGlobalChanelPush();
+								Alloy.Globals.registerGlobalChanelPush();
 
 								if (Ti.App.Properties.getString("myhome") == "MMF") {
 									//Alloy.Globals.baseView.add(Alloy.createController('mapmyfood').getView());
@@ -167,8 +167,6 @@ function getUserDetail(id) {
 	Alloy.Globals.Services.Vendor.getCompany(id, function(response) {
 		Ti.API.info('LOGIN RESPONSE' + JSON.stringify(response));
 		var userInfo = Alloy.Globals.getData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO);
-		//alert(userInfo);
-		//alert(JSON.stringify(response));
 		userInfo["company"] = response[0];
 		userInfo["unit"] = "2001";
 		Alloy.Globals.setData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO, userInfo);
@@ -176,25 +174,6 @@ function getUserDetail(id) {
 			view : Alloy.createController('/foodtruck/checkins/checkin_first').getView(),
 			title : "Check In"
 		});
-	});
-}
-function getUnitManagerDetails(id) {
-	//TODO make company id and unit id dynamic
-	var id = id;
-	Alloy.Globals.Services.Vendor.getUnit(id, function(response) {
-		Ti.API.info('LOGIN RESPONSE' + JSON.stringify(response));
-		var userInfo = Alloy.Globals.getData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO);
-		//alert(userInfo);
-		//alert(JSON.stringify(response));
-		userInfo["unitmanagerdetails"] = response[0]; 
-		userInfo["unit"] = id;
-		Ti.API.info("SFEZKeys.KEYS.LOGGED_IN_USERS_INFO:" + JSON.stringify(userInfo));
-		Alloy.Globals.setData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO, userInfo);
-		require("utils").replaceCentralView({
-			view : Alloy.createController('/foodtruck/checkins/checkin_first').getView(),
-			title : "Check In"
-		});
-		Alloy.Globals.Services.User.sendUnitManagerDeviceTokenToServer(userInfo);
 	});
 }
 function getCustomerDetail(customerID){
@@ -205,7 +184,6 @@ function getCustomerDetail(customerID){
 		userInfo["company"] = response[0];
 		userInfo["unit"] = "2001";
 		Alloy.Globals.setData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO, userInfo);
-		Ti.API.info("SFEZKeys.KEYS.LOGGED_IN_USERS_INFO:custtt " + JSON.stringify(userInfo));
 		/*require("utils").replaceCentralView({
 			view : Alloy.createController('/foodtruck/checkins/checkin_first').getView(),
 			title : "Check In"
@@ -213,7 +191,6 @@ function getCustomerDetail(customerID){
 		Alloy.Globals.Services.User.sendUserDeviceTokenToServer(response[0].id);
 	});
 }
-
 
 function doLogin(e) {
 	if (!validateInputs()) {
@@ -233,10 +210,8 @@ function doLogin(e) {
 	}
 	Alloy.Globals.Services.User.login(params, function(response) {
 		response && Alloy.Globals.setData(SFEZKeys.KEYS.LOGGED_IN_USERS_INFO, response);
-		//alert(response.user.role +"@@@id"+ response.user.id);
-		Ti.API.info(JSON.stringify(response));
 		if (response.user.role == "CUSTOMER") {
-			if (lastRole == "OWNER" || response.user.role == "UNITMGR") {
+			if (lastRole == "OWNER") {
 				//logic to switch bottom tabs
 				Alloy.Globals.mainView.baseView.removeAllChildren();
 				Alloy.Globals.mainView.baseView.add(require('bottomtabs').createConsumerFooter("CUSTOMER"));
@@ -248,7 +223,7 @@ function doLogin(e) {
 				title : L('MapMyFood')
 			});
 			getCustomerDetail(response.user.id);
-		} else if (response.user.role == "OWNER" || response.user.role == "UNITMGR") {
+		} else if (response.user.role == "OWNER") {
 			if (lastRole == "" || lastRole == "CUSTOMER") {
 				//logic to switch bottom tabs
 				Alloy.Globals.mainView.baseView.removeAllChildren();
@@ -256,10 +231,7 @@ function doLogin(e) {
 				Alloy.Globals.menuTable.removeAllChildren();
 				Alloy.Globals.menuTable.setData(Alloy.Globals.getTableRows("OWNER"));
 			}
-			if(response.user.role == "OWNER")
-				getUserDetail(response.user.id);
-			else if(response.user.role == "UNITMGR")
-				getUnitManagerDetails(response.user.id);
+			getUserDetail(response.user.id);
 		}
 	}, function() {
 		$.login.title = L('login');

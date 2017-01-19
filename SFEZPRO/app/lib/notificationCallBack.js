@@ -24,13 +24,13 @@ function showAcceptOrderDialog(title, message, order_id) {
 	dialog.addEventListener('click', function(e) {
 		Alloy.Globals.loading.show(L("Please wait..."), false);
 		if (e.index === 0) {
-			params['status'] = true;
+			params['order_status'] = true;
 		} else {
-			params['status'] = false;
+			params['order_status'] = false;
 		}
 		Alloy.Globals.Services.Vendor.acceptOrder(params, function() {
 			Alloy.Globals.loading.hide();
-			var msg = (params['status'] == true) ? "Order Accepted" : "Order Declined";
+			var msg = (params['order_status'] == true) ? "Order Accepted" : "Order Declined";
 			alert(msg);
 		});
 	});
@@ -112,9 +112,8 @@ function showAlertDialog(title, message, _isOrderAcceptanceStatus, orderAcceptan
 
 exports.notificationCallBack = function(e) {
 	Ti.API.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NOTIFICATION ARRIVES >>>>>>>>>>>>>>>>>>>>>>>> \n", +JSON.stringify(e));
-	Ti.API.info(JSON.stringify(e));
 	inBackground = e.inBackground || false;
-	Ti.API.info("****************notificationCallBack****************** " + e.status);
+	Ti.API.info("****************notificationCallBack****************** " + e.order_status);
 
 	if (inBackground) {
 		Alloy.createController('navigationDrawerContent/home').getView().open();
@@ -123,7 +122,7 @@ exports.notificationCallBack = function(e) {
 			showAcceptOrderDialog(e.title, e.message, e.order);
 		} else {
 			var isOrderAcceptanceStatus = (e.type == "ORDER_ACCEPTED_STATUS") ? true : false;
-			showAlertDialog(e.title, e.message, isOrderAcceptanceStatus, e.status);
+			showAlertDialog(e.title, e.message, isOrderAcceptanceStatus, e.order_status);
 		}
 
 	} else {
@@ -131,7 +130,7 @@ exports.notificationCallBack = function(e) {
 			showAcceptOrderDialog(e.title, e.message, e.order);
 		} else {
 			var isOrderAcceptanceStatus = (e.type == "ORDER_ACCEPTED_STATUS") ? true : false;
-			showAlertDialog(e.title, e.message, isOrderAcceptanceStatus, e.status);
+			showAlertDialog(e.title, e.message, isOrderAcceptanceStatus, e.order_status);
 		}
 	}
 };

@@ -55,7 +55,7 @@
 	launcherIntent.putExtra("message", message);
 	launcherIntent.putExtra("type", type);
 	launcherIntent.putExtra("order", order);
-	launcherIntent.putExtra("status", status);
+	launcherIntent.putExtra("order_status", order_status);
 
 	// increase notification id
 	ntfId += 1;
@@ -91,9 +91,9 @@
 	}
 
 
-	Ti.API.info("***************ORDER_ACCEPTED_STATUS*************** " + type + " " + status);
+	Ti.API.info("***************ORDER_ACCEPTED_STATUS*************** " + type + " " + order_status);
 	if (type == "ORDER_ACCEPTED_STATUS") {
-		(status == "true") ? require("notificationCallBack").getOtpAndCheckoutIdFromServer() : false;
+		(order_status == "true") ? require("notificationCallBack").getOtpAndCheckoutIdFromServer() : false;
 	}
 
 	// create notification
